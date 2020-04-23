@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -22,10 +21,10 @@ public class BroncoDirect extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        /*STICKY HEADER*/
+        /**STICKY HEADER**/
         //Basic website and student information
-        Label Oracle = new Label("Oracle");
-        Label studentName = new Label("Ben Steichen");
+        Label Oracle = new Label("Oracle"); //Temporary "Oracle"
+        Label studentName = new Label("Ben Steichen"); //Student name
         Label sC = new Label("Student Center");
 
         //Navigation buttons
@@ -34,20 +33,20 @@ public class BroncoDirect extends Application {
         Button scheNav = new Button("Schedule");
         Button finNav = new Button("Finances");
         Button persNav = new Button("Personal Information");
-        Button favorites = new Button("Favorites"); //opens out a menu
-        Label signOut = new Label("Sign Out");
-        HBox nav = new HBox(10, home, studentCenter, scheNav, finNav, persNav, favorites);
+        Button favorites = new Button("Favorites"); //opens out additional options
+        Button signOut = new Button("Sign Out"); //right align
+        HBox nav = new HBox(10, home, studentCenter, scheNav, finNav, persNav, favorites); //navigation links
         HBox sO = new HBox(signOut);
         sO.setAlignment(Pos.CENTER_RIGHT);
         HBox rightAlignment = new HBox(400, nav, sO);
 
         //Top bar containers
         HBox basicInfo = new HBox(50, Oracle, studentName, sC);
-        HBox links = new HBox(rightAlignment);
-        VBox stickyHeader = new VBox(10, basicInfo, links);
+        HBox links = new HBox(rightAlignment); //navigation links
+        VBox stickyHeader = new VBox(10, basicInfo, links); //MAIN STICKY HEADER HOLDER
 
-        /*MAIN BODY*/
-        //ACADEMICS
+        /**MAIN BODY**/
+        /*ACADEMICS*/
         Label acaTitle = new Label("Academics");
         Button searchClasses = new Button("Search Classes");
         Button weeklySche = new Button("Weekly Schedule");
@@ -55,7 +54,7 @@ public class BroncoDirect extends Application {
         Button enroll = new Button("Enroll");
         Button myAca = new Button("My Academics");
         Button builder = new Button("Schedule Builder");
-        ComboBox otherAca = new ComboBox();
+        ComboBox otherAca = new ComboBox(); //Other Academics Combobox
         otherAca.getItems().addAll(
                 "Academic Planner",
                 "Apply for Graduation",
@@ -71,17 +70,17 @@ public class BroncoDirect extends Application {
                 "Transfer Credit: Report",
                 "What-if Report"
         );
-        otherAca.setValue("Other Academics");
-        Button acaConfirm = new Button(">");
-        HBox oA = new HBox(otherAca, acaConfirm);
+        otherAca.setValue("Other Academics"); //default value
+        Button acaConfirm = new Button(">"); //button to confirm selection
+        HBox oA = new HBox(otherAca, acaConfirm); //puts combobox and button together
 
         //Academics navigation
         VBox acaLinks = new VBox(searchClasses, weeklySche, plan, enroll, myAca, builder, oA);
 
         //Schedule
         Label scheLabel = new Label("Spring 2020 Schedule"); //Schedule header
-        Label placeHolder1 = new Label("[]");
-        Label placeHolder2 = new Label("[]");
+        Label placeHolder1 = new Label("[]"); //schedule placeholder
+        Label placeHolder2 = new Label("[]"); //deadline icon placeholder
         Label academicCalDL = new Label("Academic Calender Deadline"); //Academic Calender Deadline
         HBox dLCal = new HBox(placeHolder1, academicCalDL);
         CheckBox disProf = new CheckBox("Display Professor"); //Display professor name
@@ -91,12 +90,13 @@ public class BroncoDirect extends Application {
         HBox acaInfo = new HBox(acaLinks, schedule); //puts together the links and schedule into 1 section
         VBox academics = new VBox(acaTitle, acaInfo); //ENTIRE academics portion
 
-        //FINANCES
+        /*FINANCES*/
         Label finLabel = new Label("Finances");
+        //MY ACCOUNT PORTION
         Label myAccLabel = new Label("My Account");
         Button accountInq = new Button("Account Inquiry");
         Button directDep = new Button("Direct Deposit");
-        ComboBox otherFin = new ComboBox();
+        ComboBox otherFin = new ComboBox(); //Other Finances
         otherFin.getItems().addAll(
                 "Account Activity",
                 "Charges Due",
@@ -104,27 +104,31 @@ public class BroncoDirect extends Application {
                 "View 1098-T",
                 "View Student Permissions"
         );
-        otherFin.setValue("Other Finances");
-        Button finConfirm = new Button(">");
-        HBox oF = new HBox(otherFin, finConfirm);
+        otherFin.setValue("Other Finances"); //default value
+        Button finConfirm = new Button(">"); //button to confirm selection
+        HBox oF = new HBox(otherFin, finConfirm); //puts combobox and button together
         VBox myAccount = new VBox(myAccLabel, accountInq, directDep, oF);
-
+        //FINANCIAL AID PORTION
         Label fALabel = new Label ("Financial Aid");
         Button viewFA = new Button("View Financial Aid");
         Button accDec = new Button("Accept/Decline Awards");
         Button pending = new Button("Pending Financial Aid");
         VBox financialAid = new VBox(fALabel, viewFA, accDec, pending);
+        VBox finLinks = new VBox(myAccLabel, myAccount, fALabel, financialAid); //ALL left-side links
+        //PENDING CHARGES
+        Label chargeAmt = new Label("You have no outstanding charges at this time"); //current charges
+        Label popup = new Label("Please turn off your popoff blocker"); //in RED
+        Button payment = new Button("Make a Payment");
+        Label disclaimer = new Label("*Important Student Fee Information");
+        VBox charges = new VBox(chargeAmt, popup, payment, disclaimer); //holds entire right-side portion
+        HBox finBody = new HBox(finLinks, charges); //holds everything under financial title
+        VBox finances = new VBox(finLabel, finBody); //ENTIRE financial portion
 
+        VBox left = new VBox(academics, finances); //MAIN BODY of BroncoDirect
 
-
-        VBox finLinks = new VBox(finLabel, myAccount, financialAid);
-        VBox finances = new VBox(finLabel, finLinks);
-
-        VBox left = new VBox(academics, finances);
-
-        BorderPane container = new BorderPane();
-        container.setTop(stickyHeader);
-        container.setLeft(left);
+        BorderPane container = new BorderPane(); //ENTIRE WEBSITE
+        container.setTop(stickyHeader); //sticky header
+        container.setLeft(left); //main body
 
         /*DISPLAY*/
         Scene scene = new Scene(container, 1024, 768); //set scene with container
