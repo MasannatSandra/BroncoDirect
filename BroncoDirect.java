@@ -1,4 +1,4 @@
-package BroncoDirect;
+package broncodirect;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -70,7 +70,7 @@ public class BroncoDirect extends Application {
                 "Transfer Credit: Report",
                 "What-if Report"
         );
-        otherAca.setValue("Other Academics"); //default value
+        otherAca.setValue("Other Academics..."); //default value
         Button acaConfirm = new Button(">"); //button to confirm selection
         HBox oA = new HBox(otherAca, acaConfirm); //puts combobox and button together
 
@@ -104,7 +104,7 @@ public class BroncoDirect extends Application {
                 "View 1098-T",
                 "View Student Permissions"
         );
-        otherFin.setValue("Other Finances"); //default value
+        otherFin.setValue("Other Finances..."); //default value
         Button finConfirm = new Button(">"); //button to confirm selection
         HBox oF = new HBox(otherFin, finConfirm); //puts combobox and button together
         VBox myAccount = new VBox(myAccLabel, accountInq, directDep, oF);
@@ -124,12 +124,162 @@ public class BroncoDirect extends Application {
         HBox finBody = new HBox(finLinks, charges); //holds everything under financial title
         VBox finances = new VBox(finLabel, finBody); //ENTIRE financial portion
 
-        VBox left = new VBox(academics, finances); //MAIN BODY of BroncoDirect
+				/*PERSONAL INFORMATION*/
+        Label persinfo = new Label ("Personal Information");
+      	Button emecontact = new Button ("Emergency Contact");
+      
+        ComboBox otherper = new ComboBox(); //Other Personal
+      	otherper.setValue("Other Personal...");
+        otherper.getItems().addAll("Addresses", "Email Addresses", "Honor and Awards",
+                                    "Phone Numbers", "Pronouns");
+        Button perconfirm = new Button(">");
+      	HBox oP = new HBox (otherper, perconfirm);
+      	VBox personal = new VBox(emecontact, oP);
+      	
+      	//right alignment of the person info section
+      	Label contactinfo = new Label("Contact Information");
+        
+        Label mailadd = new Label("Mailing Address"); ////this is a link
+      	Label mailinfo = new Label("XXXX Street Name\nCity, CA, XXXXX");	
+      	
+      	Label mainphone = new Label("Main Phone"); //this is a link
+      	Label phoneinfo = new Label ("XXX/XXX-XXXX");
+      	
+      	Label homeadd = new Label("Home Address"); ////this is a link
+      	Label homeinfo = new Label("\nXXXX Street Name\nCity, CA, XXXXX");
+      	
+      	Label campem = new Label("Campus Email"); ////this is a link
+      	Label campinfo = new Label("bsteichen@cpp.edu");
+      	
+      	HBox mailhome = new HBox(mailadd, homeadd);
+      	HBox mailhomeinfo = new HBox (mailinfo, homeinfo);
+      	HBox mainphem = new HBox (mainphone, campem);
+      	HBox phoneeminfo = new HBox (phoneinfo, campinfo);
+      	VBox contactstuff = new VBox(mailhome, mailhomeinfo, mainphem, phoneeminfo);
+
+      	VBox allInfo = new VBox(persinfo, personal);
+      	
+        HBox rightallInfo = new HBox(allInfo, contactstuff);
+          
+        /*ADMISSIONS*/
+        Label admiLabel = new Label("Admissions");
+        Button apply = new Button("Apply For Admission");
+      	Label placeholder3 = new Label("[]"); //(i) icon placeholder
+      	Label pndMsg = new Label("You do not have any pending applications at this time.");
+      	HBox pendingApps = new HBox(placeholder3, pndMsg);
+      	HBox admiBody = new HBox(apply, pendingApps);
+      	VBox admissions = new VBox(admiLabel, admiBody);
+
+        /**SIDEBAR**/
+      	/*HOLDS*/
+      	Label holdLabel = new Label("Holds");
+      	Label holdInfo = new Label("No holds.");
+      	VBox holdBox = new VBox(holdLabel, holdInfo);
+      
+      	/*TO DO*/
+      	Label toDoLabel = new Label("To-Do Lists");
+        Label toDoInfo = new Label("No To Do's.");
+      	VBox toDoList = new VBox(toDoLabel, toDoInfo);
+      
+      	/*ENROLLMENT*/
+      	Label enrollLabel = new Label("Enrollment Details");
+      	Label appointLabel = new Label("Enrollment Appointment(s)");//this is a link
+      	Label fallLabel = new Label("Fall Semester 2020 Term"); //bold if possible
+      
+        Label regularLabel = new Label("Regular Academic Session");
+        Label enrollDateLabel1 = new Label("XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm"); //blockquote
+        Label enrollDateLabel2 = new Label("XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm"); //blockquote
+        Label summerLabel = new Label("Summer Semester 2020 Term"); //bold if possible
+      
+        /*EXPANDABLE/COLLAPSABLE LABELS*/
+        Button summerButton = new Button("Expand/Collapse Dates");
+        Label summerDates = new Label(" "); //label will be changed when button is clicked
+        summerButton.setOnAction(e ->
+        {
+          if (summerDates.getText().equals(" ")){
+             summerDates.setText("Regular Academic Session\n"
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "Open University Session\n"
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "Open University 1st 5 week\n"
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "Open University 2nd 5 week\n"
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm\n"//blockquote
+                                 + "XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm"); //blockquote
+          }//end if
+          else{
+            summerDates.setText(" ");
+          }//end else
+        });
+        VBox enrollBox = new VBox(enrollLabel, appointLabel, fallLabel, regularLabel, 
+                                  enrollDateLabel1, enrollDateLabel2, summerLabel,
+                                  summerButton, summerDates);
+      
+      /* old code:
+      	Label regularLabel1 = new Label("Regular Academic Session");
+        Label openLabel1 = new Label("Open University Session");
+        Label enrollDateLabel1 = new Label("XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm");
+      	Label openLabel2 = new Label("Open University 1st 5 week");
+        Label enrollDateLabel2 = new Label("XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm");
+        Label openLabel3 = new Label("Open University 2nd 5 week");
+      	Label enrollDateLabel3 = new Label("XX/XX/XX XX:XXam - XX/XX/XX XX:XXpm");
+      
+      	VBox fallList = new VBox(regularLabel);
+      	ComboBox summerList = new ComboBox();
+        summerList.getItems().addAll(regularLabel1,enrollDateLabel1,
+                                  openLabel1,enrollDateLabel1,
+                                  openLabel2,enrollDateLabel2,
+                                  openLabel3,enrollDateLabel3);
+        VBox enrollBox = new VBox(emrollLabel,appointLabel,
+                                  fallLabel,regularLabel,enrollDateLabel,
+                                  summerLabel,summerList);
+                                  
+        */
+      	
+        /*ADVISOR*/
+        Label advisorLabel = new Label("Advisor");
+      	Label CSadvising = new Label("CS Advising");
+        /*CS ADVISORS*/
+        //to be indented/in a blockquote
+      	Label advisor1 = new Label("XXXXX");
+      	Label advEmail1 = new Label("XXXXX@XXX.XXX"); //this is a link
+      	Label advisor2 = new Label("XXXXX");
+        Label advEmail2 = new Label("XXXXX@XXX.XXX"); //this is a link
+        /*PROGRAM ADVISOR*/
+        Label programAdv = new Label("Program Advisor");
+      	Label pAdvNone = new Label ("None Assigned");
+        VBox advisorList = new VBox(advisor1, advEmail1, advisor2, advEmail2); //for the blockquote of advisor contacts
+        VBox advisorBox = new VBox(advisorLabel, CSadvising, advisorList, programAdv, pAdvNone);
+        
+        /*EXTERNAL LINKS*/
+      	Label exlinks=new Label ("Cal Poly Pomona External Links");
+      	
+      	Label bookstore = new Label("Bookstore-Get/View textbooks");//this is a link
+        Label broncoCompass = new Label("BroncoCompass-Advising");//this is a link
+        Label ehelp = new Label("e-help - On-line assistance");//this is a link
+      	Label cashier = new Label("Student Accounting/Cashiering");//this is a link
+        Label finacial = new Label("Financial Aid");//this is a link
+        Label cssa = new Label("CSSA- Stdnt Involve & Rep Fee");//this is a link
+        Label blackboard = new Label("BlackBoard");//this is a link
+        Label campusem = new Label("Campus Email - MS Outlook Live");//this is a link
+        Label vote = new Label("Voter Registration");//this is a link
+        Label calFresh = new Label("CalFresh");//this is a link
+      
+      	VBox exlink = new VBox (exlinks, bookstore,broncoCompass, ehelp, cashier, finacial,
+                               cssa, blackboard, campusem, vote, calFresh);
+      
+      
+        VBox left = new VBox(academics, finances, rightallInfo, admissions); //MAIN BODY of BroncoDirect
+      	VBox right = new VBox(holdBox, toDoList, enrollBox, advisorBox, exlink); //SIDEBAR of BroncoDirect
 
         BorderPane container = new BorderPane(); //ENTIRE WEBSITE
         container.setTop(stickyHeader); //sticky header
         container.setLeft(left); //main body
-
+      	container.setRight(right); //sidebar
+		
         /*DISPLAY*/
         Scene scene = new Scene(container, 1024, 768); //set scene with container
         primaryStage.setScene(scene); //add scene to stage
