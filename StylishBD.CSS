@@ -1,0 +1,130 @@
+.root, .container {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-radius: 0px;
+}
+
+    .button:hover {
+        -fx-background-color: lightblue;
+    }
+
+    .button:focus {
+        -fx-background-color: black;
+    }
+
+.link {
+    -fx-text-fill: blue;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+    .link:hover {
+        -fx-underline: false;
+    }
+
+#popup {
+    -fx-text-fill: red;
+}
+
+.sideButton {
+    -fx-background-color: lightgray;
+    -fx-pref-width: 180px;
+    -fx-border-radius: 0px;
+    -fx-border-size: 1px;
+    -fx-border-color: black;
+}
+
+.other {
+    -fx-background-color: lightgray;
+    -fx-pref-width: 150px;
+    -fx-border-radius: 0px;
+    -fx-border-size: 1px;
+    -fx-border-color: black;
+}
+
+    .other:hover {
+        -fx-background-color: gray;
+    }
+
+.nav {
+    -fx-background-color: lightblue;
+}
+
+#stickyHeader {
+    -fx-background-color: gray;
+}
+
+#basicInfo {
+    -fx-font-size: 11pt;
+}
+
+#studentName {
+    -fx-font-weight: bold;
+}
+
+.confirm {
+    -fx-pref-width: 25px;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
+
+.stickyHeader{
+    //TODO
+}
+
+.sectionTitle {
+    -fx-background-color: darksalmon;
+    -fx-pref-width: 650px;
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-font-size: 14pt;
+}
+
+.subtitle {
+    -fx-font-size: 12pt;
+}
+
+.helpAlign {
+    -fx-padding: 0px 0px 0px 7px;
+}
+
+.infobox {
+    -fx-background-color: #eeeeee;
+    -fx-pref-width: 415px;
+    -fx-border-color: black;
+    -fx-border-size: 1px;
+    -fx-padding: 10px;
+}
+
+.payment {
+    -fx-background-color: orange;
+}
+
+.sideBarTitle {
+    -fx-background-color: darksalmon;
+    -fx-pref-width: 250px;
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-font-size: 10pt;
+}
+
+.sideBarBody {
+    -fx-pref-width: 250px;
+    -fx-padding: 7px;
+    -fx-border-color: transparent black black black;
+    -fx-border-size: 1px;
+}
+
+.expandButton {
+    -fx-background-color: orange;
+}
+
+.boldText {
+    -fx-pref-width: 250px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.blockquote {
+    -fx-padding: 0px 0px 0px 7px;
+}
