@@ -104,7 +104,7 @@ public class BroncoDirect extends Application {
         Label schedule3 = new Label("M/W 00:00AM-00:00PM\nRoom 0-000");
         Label schedule4 = new Label("M/W 00:00AM-00:00PM\nRoom 0-000");
         Label extra = new Label("");
-
+        
         GridPane fauxSchedule = new GridPane();
         fauxSchedule.add(extra, 0, 0);
         fauxSchedule.add(hold1, 0, 1); //deadline icons
@@ -121,12 +121,76 @@ public class BroncoDirect extends Application {
         fauxSchedule.add(schedule2, 2, 2);
         fauxSchedule.add(schedule3, 2, 3);
         fauxSchedule.add(schedule4, 2, 4);
-
         ImageView displayDeadline = new ImageView(deadline);
         Label academicCalDL = new Label("Academic Calender Deadline"); //Academic Calender Deadline
         HBox dLCal = new HBox(5, displayDeadline, academicCalDL);
-        CheckBox disProf = new CheckBox("Display Professor"); //Display professor name
-        CheckBox disClass = new CheckBox("Display Class Name"); //Display full class name
+        CheckBox disProf = new CheckBox("Display Instructor"); //Display instructor name
+        CheckBox disClass = new CheckBox("Display Class Title"); //Display full class title
+        
+        disProf.setOnAction(e ->
+        {
+           //display instructor names only
+           if(disProf.isSelected() && !disClass.isSelected()) {
+              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+           }
+           //display class title only
+           else if (!disProf.isSelected() && disClass.isSelected()){
+              class1.setText("XX 0000-00\nLEC (00000)\nClass Name");
+              class2.setText("XX 0000-00\nLEC (00000)\nClass Name");
+              class3.setText("XX 0000-00\nLEC (00000)\nClass Name");
+              class4.setText("XX 0000-00\nLEC (00000)\nClass Name");
+         }
+           //if both are selected
+           else if(disProf.isSelected() && disClass.isSelected()){
+              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+           }
+           //if both aren't selected
+           else {
+              class1.setText("XX 0000-00\nLEC (00000)");
+              class2.setText("XX 0000-00\nLEC (00000)");
+              class3.setText("XX 0000-00\nLEC (00000)");
+              class4.setText("XX 0000-00\nLEC (00000)");
+         }
+        });//end disProf event handler
+        
+        disClass.setOnAction(e ->
+        {
+           //if only disProf selected display class and instructor names
+           if(disProf.isSelected() && !disClass.isSelected()) {
+              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+           }
+           //if only disClass selected display class and class title
+           else if (!disProf.isSelected() && disClass.isSelected()){
+              class1.setText("XX 0000-00\nLEC (00000)\nClass Title");
+              class2.setText("XX 0000-00\nLEC (00000)\nClass Title");
+              class3.setText("XX 0000-00\nLEC (00000)\nClass Title");
+              class4.setText("XX 0000-00\nLEC (00000)\nClass Title");
+         }
+           //if both are selected display class, instructor, class title
+           else if(disProf.isSelected() && disClass.isSelected()){
+              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+           }
+           //if both aren't selected display class only
+           else {
+              class1.setText("XX 0000-00\nLEC (00000)");
+              class2.setText("XX 0000-00\nLEC (00000)");
+              class3.setText("XX 0000-00\nLEC (00000)");
+              class4.setText("XX 0000-00\nLEC (00000)");
+         }
+        });//end disClass event handler
+        
         HBox schOptions = new HBox(10, disProf, disClass);
         VBox schedule = new VBox(10, scheLabel, fauxSchedule, dLCal, schOptions); //SCHEDULE section
 
