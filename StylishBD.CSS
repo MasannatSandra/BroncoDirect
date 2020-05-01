@@ -4,18 +4,11 @@
 
 .button {
     -fx-background-radius: 0px;
+    -fx-cursor: hand;
 }
 
-    .button:hover {
-        -fx-background-color: lightblue;
-    }
-
-    .button:focus {
-        -fx-background-color: black;
-    }
-
 .link {
-    -fx-text-fill: blue;
+    -fx-text-fill: #1874a4;
     -fx-underline: true;
     -fx-cursor: hand;
 }
@@ -29,31 +22,47 @@
 }
 
 .sideButton {
-    -fx-background-color: lightgray;
+    -fx-background-color: #e0f0f8;
     -fx-pref-width: 180px;
-    -fx-border-radius: 0px;
     -fx-border-size: 1px;
-    -fx-border-color: black;
+    -fx-border-color: #92bcd2;
+    -fx-text-fill: #0c5981;
 }
 
+    .sideButton:hover {
+        -fx-background-color: #38a080;
+        -fx-text-fill: #ffffff;
+    }
+
 .other {
-    -fx-background-color: lightgray;
-    -fx-pref-width: 150px;
+    -fx-background-color: #eeeeee;
+    -fx-pref-width: 147px;
     -fx-border-radius: 0px;
     -fx-border-size: 1px;
-    -fx-border-color: black;
+    -fx-border-color: #cccccc;
 }
 
     .other:hover {
-        -fx-background-color: gray;
+        -fx-background-color: #f3c4a4;
     }
 
-.nav {
-    -fx-background-color: lightblue;
+.navHolder {
+    -fx-background-image: url("/BroncoDirect/Images/gray-background.png");
 }
 
+.nav {
+    -fx-background-color: #fce8c4;
+    -fx-border-color: #f3c4a4;
+    -fx-border-size: 1px;
+}
+
+    .nav:hover {
+        -fx-background-color: #f3c4a4;
+        -fx-text-fill: #ffffff;
+    }
+
 #stickyHeader {
-    -fx-background-color: gray;
+    -fx-background-image: url("/BroncoDirect/Images/background-pattern2.png");
 }
 
 #basicInfo {
@@ -62,23 +71,34 @@
 
 #studentName {
     -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
 }
 
 .confirm {
-    -fx-pref-width: 25px;
-    -fx-background-radius: 25px;
-    -fx-border-radius: 25px;
+    -fx-background-color: #fce8c4;
+    -fx-pref-width: 28px;
+    -fx-background-radius: 28px;
+    -fx-border-radius: 28px;
+    -fx-border-size: 1px;
+    -fx-border-color: #f3c4a4;
 }
+
+    .confirm:hover {
+        -fx-background-color: #f3c4a4;
+        -fx-text-fill: #ffffff;
+    }
 
 .stickyHeader{
     //TODO
 }
 
 .sectionTitle {
-    -fx-background-color: darksalmon;
+    -fx-background-color: #f8f8f8;
     -fx-pref-width: 650px;
     -fx-padding: 5px 10px 5px 10px;
     -fx-font-size: 14pt;
+    -fx-border-color: #cccccc;
+    -fx-border-size: 1px;
 }
 
 .subtitle {
@@ -92,32 +112,80 @@
 .infobox {
     -fx-background-color: #eeeeee;
     -fx-pref-width: 415px;
-    -fx-border-color: black;
+    -fx-border-color: #cccccc;
     -fx-border-size: 1px;
     -fx-padding: 10px;
 }
 
-.payment {
-    -fx-background-color: orange;
+#schedule {
+    -fx-pref-width: 415px;
 }
 
+    #extra {
+        -fx-pref-width: 55px;
+        -fx-border-size: 0px 1px 0px 0px;
+        -fx-border-color: transparent black transparent transparent;
+    }
+
+    #classTitle {
+        -fx-pref-width: 180px;
+        -fx-border-size: 0px 1px 0px 0px;
+        -fx-border-color: transparent black transparent transparent;
+        -fx-font-weight: bold;
+        -fx-alignment: center;
+    }
+
+    #scheduleTitle {
+        -fx-pref-width: 180px;
+        -fx-font-weight: bold;
+        -fx-alignment: center;
+    }
+
+    .deadlineIcon {
+        -fx-pref-width: 55px;
+        -fx-border-size: 1px 1px 0px 0px;
+        -fx-border-color: black black transparent transparent;
+    }
+
+    .scDivide1 {
+        -fx-pref-width: 180px;
+        -fx-padding: 10px;
+        -fx-border-size: 1px 1px 0px 0px;
+        -fx-border-color: black black transparent transparent;
+    }
+
+    .scDivide2 {
+        -fx-pref-width: 180px;
+        -fx-padding: 10px;
+        -fx-border-size: 1px 0px 0px 0px;
+        -fx-border-color: black transparent transparent transparent;
+    }
+
 .sideBarTitle {
-    -fx-background-color: darksalmon;
+    -fx-background-color: #f8f8f8;
     -fx-pref-width: 250px;
     -fx-padding: 5px 10px 5px 10px;
     -fx-font-size: 10pt;
+    -fx-border-color: #cccccc;
+    -fx-border-size: 1px;
 }
 
 .sideBarBody {
     -fx-pref-width: 250px;
     -fx-padding: 7px;
-    -fx-border-color: transparent black black black;
+    -fx-border-color: transparent #cccccc #cccccc #cccccc;
     -fx-border-size: 1px;
 }
 
-.expandButton {
-    -fx-background-color: orange;
+.payment, .expandButton {
+    -fx-background-color: #fce8c4;
+    -fx-border-size: 1px;
+    -fx-border-color: #f3c4a4;
 }
+
+    .expandButton:hover {
+        -fx-background-color: #f3c4a4;
+    }
 
 .boldText {
     -fx-pref-width: 250px;
