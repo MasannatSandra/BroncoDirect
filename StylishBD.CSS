@@ -7,6 +7,70 @@
     -fx-cursor: hand;
 }
 
+.navHolder {
+    -fx-background-image: url("/BroncoDirect/Images/gray-background.png");
+}
+
+.nav, #favorites {
+    -fx-background-color: #fce8c4;
+    -fx-border-color: #f3c4a4;
+    -fx-border-size: 1px;
+}
+
+    .nav:hover {
+        -fx-background-color: #f3c4a4;
+        -fx-text-fill: #ffffff;
+    }
+
+    #favorites {
+        -fx-pref-width: 100;
+    }
+
+    #favorites > .list-view {
+        -fx-pref-width: 200;
+    }
+
+#stickyHeader {
+    -fx-background-image: url("/BroncoDirect/Images/background-pattern2.png");
+}
+
+#basicInfo {
+    -fx-font-size: 11pt;
+}
+
+#studentName {
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.stickyHeader{
+    //TODO
+}
+
+.sectionTitle {
+    -fx-background-color: #f8f8f8;
+    -fx-pref-width: 650px;
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-font-size: 14pt;
+    -fx-border-color: #cccccc;
+    -fx-border-size: 1px;
+}
+
+.subtitle {
+    -fx-font-size: 12pt;
+}
+
+.helpAlign {
+    -fx-padding: 0px 0px 0px 7px;
+}
+
+.infobox {
+    -fx-pref-width: 415px;
+    -fx-border-color: #cccccc;
+    -fx-border-size: 1px;
+    -fx-padding: 10px;
+}
+
 .link {
     -fx-text-fill: #1874a4;
     -fx-underline: true;
@@ -43,94 +107,40 @@
 }
 
     .other:hover {
-        -fx-background-color: #f3c4a4;
+        -fx-background-color: #92bcd2;
     }
-
-.navHolder {
-    -fx-background-image: url("/BroncoDirect/Images/gray-background.png");
-}
-
-.nav {
-    -fx-background-color: #fce8c4;
-    -fx-border-color: #f3c4a4;
-    -fx-border-size: 1px;
-}
-
-    .nav:hover {
-        -fx-background-color: #f3c4a4;
-        -fx-text-fill: #ffffff;
-    }
-
-#stickyHeader {
-    -fx-background-image: url("/BroncoDirect/Images/background-pattern2.png");
-}
-
-#basicInfo {
-    -fx-font-size: 11pt;
-}
-
-#studentName {
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
-}
 
 .confirm {
-    -fx-background-color: #fce8c4;
+    -fx-background-color: #e0f0f8;
     -fx-pref-width: 28px;
     -fx-background-radius: 28px;
     -fx-border-radius: 28px;
     -fx-border-size: 1px;
-    -fx-border-color: #f3c4a4;
+    -fx-border-color: #92bcd2;
+    -fx-text-fill: #0c5981;
 }
 
     .confirm:hover {
-        -fx-background-color: #f3c4a4;
+        -fx-background-color: #38a080;
         -fx-text-fill: #ffffff;
     }
 
-.stickyHeader{
-    //TODO
-}
-
-.sectionTitle {
-    -fx-background-color: #f8f8f8;
-    -fx-pref-width: 650px;
-    -fx-padding: 5px 10px 5px 10px;
-    -fx-font-size: 14pt;
-    -fx-border-color: #cccccc;
-    -fx-border-size: 1px;
-}
-
-.subtitle {
-    -fx-font-size: 12pt;
-}
-
-.helpAlign {
-    -fx-padding: 0px 0px 0px 7px;
-}
-
-.infobox {
-    -fx-background-color: #eeeeee;
-    -fx-pref-width: 415px;
-    -fx-border-color: #cccccc;
-    -fx-border-size: 1px;
-    -fx-padding: 10px;
-}
-
 #schedule {
     -fx-pref-width: 415px;
+    -fx-border-color: #cccccc;
+    -fx-border-size: 1px;
 }
 
     #extra {
         -fx-pref-width: 55px;
         -fx-border-size: 0px 1px 0px 0px;
-        -fx-border-color: transparent black transparent transparent;
+        -fx-border-color: transparent #cccccc transparent transparent;
     }
 
     #classTitle {
         -fx-pref-width: 180px;
         -fx-border-size: 0px 1px 0px 0px;
-        -fx-border-color: transparent black transparent transparent;
+        -fx-border-color: transparent #cccccc transparent transparent;
         -fx-font-weight: bold;
         -fx-alignment: center;
     }
@@ -144,28 +154,28 @@
     .deadlineIcon {
         -fx-pref-width: 55px;
         -fx-border-size: 1px 1px 0px 0px;
-        -fx-border-color: black black transparent transparent;
+        -fx-border-color: #cccccc #cccccc transparent transparent;
     }
 
     .scDivide1 {
         -fx-pref-width: 180px;
         -fx-padding: 10px;
         -fx-border-size: 1px 1px 0px 0px;
-        -fx-border-color: black black transparent transparent;
+        -fx-border-color: #cccccc #cccccc transparent transparent;
     }
 
     .scDivide2 {
         -fx-pref-width: 180px;
         -fx-padding: 10px;
         -fx-border-size: 1px 0px 0px 0px;
-        -fx-border-color: black transparent transparent transparent;
+        -fx-border-color: #cccccc transparent transparent transparent;
     }
 
 .sideBarTitle {
     -fx-background-color: #f8f8f8;
     -fx-pref-width: 250px;
     -fx-padding: 5px 10px 5px 10px;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
     -fx-border-color: #cccccc;
     -fx-border-size: 1px;
 }
@@ -183,7 +193,7 @@
     -fx-border-color: #f3c4a4;
 }
 
-    .expandButton:hover {
+    .payment:hover, .expandButton:hover {
         -fx-background-color: #f3c4a4;
     }
 
