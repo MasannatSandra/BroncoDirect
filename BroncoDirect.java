@@ -27,19 +27,25 @@ public class BroncoDirect extends Application {
         Label sC = new Label("Student Center");
 
         //Navigation buttons
+        Button home = new Button("Home");
         Button studentCenter = new Button("Student Center");
         Button scheNav = new Button("Schedule");
         Button finNav = new Button("Finances");
         Button persNav = new Button("Personal Information");
-        Button favorites = new Button("Favorites"); //opens out additional options
+        ComboBox favorites = new ComboBox(); //opens out additional options
+        favorites.setValue("Favorites");
+        favorites.getItems().addAll(
+                "My Academic Requirements",
+                "Add more..."
+        );
         Button signOut = new Button("Sign Out"); //right align
 
         signOut.setOnAction(e -> primaryStage.close()); //signOut closes the Stage when clicked on
-        HBox nav = new HBox(10, studentCenter, scheNav, finNav, persNav, favorites); //navigation links
+        HBox nav = new HBox(10, home, studentCenter, scheNav, finNav, persNav, favorites); //navigation links
 
         Pane spacer = new Pane();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        spacer.setMinWidth(430);
+        spacer.setMinWidth(335);
         HBox rightAlignment = new HBox(nav, spacer, signOut);
 
         //Top bar containers
@@ -104,7 +110,7 @@ public class BroncoDirect extends Application {
         Label schedule3 = new Label("M/W 00:00AM-00:00PM\nRoom 0-000");
         Label schedule4 = new Label("M/W 00:00AM-00:00PM\nRoom 0-000");
         Label extra = new Label("");
-        
+
         GridPane fauxSchedule = new GridPane();
         fauxSchedule.add(extra, 0, 0);
         fauxSchedule.add(hold1, 0, 1); //deadline icons
@@ -126,71 +132,101 @@ public class BroncoDirect extends Application {
         HBox dLCal = new HBox(5, displayDeadline, academicCalDL);
         CheckBox disProf = new CheckBox("Display Instructor"); //Display instructor name
         CheckBox disClass = new CheckBox("Display Class Title"); //Display full class title
-        
-        disProf.setOnAction(e ->
-        {
-           //display instructor names only
-           if(disProf.isSelected() && !disClass.isSelected()) {
-              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-           }
-           //display class title only
-           else if (!disProf.isSelected() && disClass.isSelected()){
-              class1.setText("XX 0000-00\nLEC (00000)\nClass Name");
-              class2.setText("XX 0000-00\nLEC (00000)\nClass Name");
-              class3.setText("XX 0000-00\nLEC (00000)\nClass Name");
-              class4.setText("XX 0000-00\nLEC (00000)\nClass Name");
-         }
-           //if both are selected
-           else if(disProf.isSelected() && disClass.isSelected()){
-              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
-              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
-              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
-              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
-           }
-           //if both aren't selected
-           else {
-              class1.setText("XX 0000-00\nLEC (00000)");
-              class2.setText("XX 0000-00\nLEC (00000)");
-              class3.setText("XX 0000-00\nLEC (00000)");
-              class4.setText("XX 0000-00\nLEC (00000)");
-         }
+
+        disProf.setOnAction(e -> {
+            //display instructor names only
+            if(disProf.isSelected() && !disClass.isSelected()) {
+                class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+            }
+            //display class title only
+            else if (!disProf.isSelected() && disClass.isSelected()){
+                class1.setText("XX 0000-00\nLEC (00000)\nClass Name");
+                class2.setText("XX 0000-00\nLEC (00000)\nClass Name");
+                class3.setText("XX 0000-00\nLEC (00000)\nClass Name");
+                class4.setText("XX 0000-00\nLEC (00000)\nClass Name");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+            }
+            //if both are selected
+            else if(disProf.isSelected() && disClass.isSelected()){
+                class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+                class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+                class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+                class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Name");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+            }
+            //if both aren't selected
+            else {
+                class1.setText("XX 0000-00\nLEC (00000)");
+                class2.setText("XX 0000-00\nLEC (00000)");
+                class3.setText("XX 0000-00\nLEC (00000)");
+                class4.setText("XX 0000-00\nLEC (00000)");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+            }
         });//end disProf event handler
-        
-        disClass.setOnAction(e ->
-        {
-           //if only disProf selected display class and instructor names
-           if(disProf.isSelected() && !disClass.isSelected()) {
-              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
-           }
-           //if only disClass selected display class and class title
-           else if (!disProf.isSelected() && disClass.isSelected()){
-              class1.setText("XX 0000-00\nLEC (00000)\nClass Title");
-              class2.setText("XX 0000-00\nLEC (00000)\nClass Title");
-              class3.setText("XX 0000-00\nLEC (00000)\nClass Title");
-              class4.setText("XX 0000-00\nLEC (00000)\nClass Title");
-         }
-           //if both are selected display class, instructor, class title
-           else if(disProf.isSelected() && disClass.isSelected()){
-              class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
-              class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
-              class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
-              class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
-           }
-           //if both aren't selected display class only
-           else {
-              class1.setText("XX 0000-00\nLEC (00000)");
-              class2.setText("XX 0000-00\nLEC (00000)");
-              class3.setText("XX 0000-00\nLEC (00000)");
-              class4.setText("XX 0000-00\nLEC (00000)");
-         }
+
+        disClass.setOnAction(e -> {
+            //if only disProf selected display class and instructor names
+            if(disProf.isSelected() && !disClass.isSelected()) {
+                class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+            }
+            //if only disClass selected display class and class title
+            else if (!disProf.isSelected() && disClass.isSelected()){
+                class1.setText("XX 0000-00\nLEC (00000)\nClass Title");
+                class2.setText("XX 0000-00\nLEC (00000)\nClass Title");
+                class3.setText("XX 0000-00\nLEC (00000)\nClass Title");
+                class4.setText("XX 0000-00\nLEC (00000)\nClass Title");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n ");
+            }
+            //if both are selected display class, instructor, class title
+            else if(disProf.isSelected() && disClass.isSelected()){
+                class1.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+                class2.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+                class3.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+                class4.setText("XX 0000-00\nLEC (00000)\nInstructor Name\nClass Title");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000\n \n ");
+            }
+            //if both aren't selected display class only
+            else {
+                class1.setText("XX 0000-00\nLEC (00000)");
+                class2.setText("XX 0000-00\nLEC (00000)");
+                class3.setText("XX 0000-00\nLEC (00000)");
+                class4.setText("XX 0000-00\nLEC (00000)");
+                schedule1.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule2.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule3.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+                schedule4.setText("M/W 00:00AM-00:00PM\nRoom 0-000");
+            }
         });//end disClass event handler
-        
+
         HBox schOptions = new HBox(10, disProf, disClass);
         VBox schedule = new VBox(10, scheLabel, fauxSchedule, dLCal, schOptions); //SCHEDULE section
 
@@ -231,7 +267,7 @@ public class BroncoDirect extends Application {
         Image iIcon = new Image("/BroncoDirect/Images/i-icon.png");
         ImageView viewiIcon = new ImageView(iIcon);
         Label chargeAmt = new Label("You have no outstanding charges at this time"); //current charges
-        Label popup = new Label("Please turn off your popoff blocker");
+        Label popup = new Label("Please turn off your pop-up blocker on browser before clicking\non Make a Payment");
         Button payment = new Button("Make a Payment");
         Label disclaimer = new Label("*Important Student Fee Information");
         HBox totalCharges = new HBox(10, viewiIcon, chargeAmt);
@@ -342,7 +378,6 @@ public class BroncoDirect extends Application {
         Label CSadvising = new Label("CS Advising");
 
         //CS ADVISORS
-        //to be indented/in a blockquote
         Label advisor1 = new Label("XXXXX");
         Label advEmail1 = new Label("XXXXX@XXX.XXX");
         Label advisor2 = new Label("XXXXX");
@@ -405,6 +440,7 @@ public class BroncoDirect extends Application {
         container.setTop(stickyHeader); //sticky header
         container.setLeft(left); //main body
         container.setRight(right); //sidebar
+        
         /*SCROLLBAR*/
         ScrollPane sp = new ScrollPane(container); //allows entire screen to scroll when it is too long
         sp.setFitToWidth(true); //disables horizontal scroll
@@ -436,11 +472,12 @@ public class BroncoDirect extends Application {
         rightAlignment.getStyleClass().add("navHolder");
         basicInfo.setId("basicInfo");
         studentName.setId("studentName");
+        home.getStyleClass().add("nav");
         studentCenter.getStyleClass().add("nav");
         scheNav.getStyleClass().add("nav");
         finNav.getStyleClass().add("nav");
         persNav.getStyleClass().add("nav");
-        favorites.getStyleClass().add("nav");
+        favorites.setId("favorites");
         signOut.getStyleClass().add("nav");
 
         //Academics
@@ -525,8 +562,8 @@ public class BroncoDirect extends Application {
 
         advisorLabel.getStyleClass().add("sideBarTitle"); //Advisor information
         advisorBody.getStyleClass().add("sideBarBody");
-        advisorList.getStyleClass().add("blockquote");
-        pAdvNone.getStyleClass().add("blockquote");
+        advEmail1.getStyleClass().add("blockquote");
+        advEmail2.getStyleClass().add("blockquote");
         CSadvising.getStyleClass().add("boldText");
         programAdv.getStyleClass().add("boldText");
         advEmail1.getStyleClass().add("link"); //start emails
