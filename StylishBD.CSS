@@ -43,10 +43,6 @@
     -fx-text-fill: #ffffff;
 }
 
-.stickyHeader{
-    //TODO
-}
-
 .sectionTitle {
     -fx-background-color: #f8f8f8;
     -fx-pref-width: 650px;
